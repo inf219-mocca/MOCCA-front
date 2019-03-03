@@ -43,7 +43,7 @@ class App extends Component {
               </TableHead>
               <TableBody>
                 {coffees.map(coffee => {
-                  return <Coffee data={coffee} key={id++} />;
+                  return <Coffee {...coffee} key={id++} />;
                 })}
               </TableBody>
             </Table>
