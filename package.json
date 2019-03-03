@@ -1,6 +1,14 @@
 {
   "name": "mocca-front",
   "version": "0.1.0",
+  "description": "Frontend for MOCCAPI",
+  "homepage": "https://github.com/inf219-mocca/mocca-front",
+  "license": "MIT",
+  "maintainers": [
+    "Eivind Dagsland Halderaker <> ()",
+    "Sondre Nilsen <nilsen.sondre@gmail.com> (https://www.eons.io)"
+  ],
+  "repository": "github:inf219-mocca/mocca-front",
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
