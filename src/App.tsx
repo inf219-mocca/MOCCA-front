@@ -35,7 +35,7 @@ class App extends Component {
                 <TableRow>
                   <TableCell align="right">Amount</TableCell>
                   <TableCell align="right">Power</TableCell>
-                  <TableCell align="right">Measured at</TableCell>
+                  <TableCell align="right">Measured</TableCell>
                   <TableCell align="right">Outages</TableCell>
                   <TableCell align="right">Started brewing</TableCell>
                   <TableCell align="right">Temperature</TableCell>
