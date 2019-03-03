@@ -13,7 +13,7 @@ class App extends Component {
   }
 }
 
-function onClick(event) {
+function onClick(event: any) {
   console.log("Testing...");
   axios
     .get("/api/v1/coffee/now")
