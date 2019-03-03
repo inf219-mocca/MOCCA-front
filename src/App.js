@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -19,10 +20,25 @@ class App extends Component {
           >
             Learn React
           </a>
+          <button type="button" onClick={onClick}>
+            Test
+          </button>
         </header>
       </div>
     );
   }
+}
+
+function onClick(event) {
+  console.log("Testing...");
+  axios
+    .get("/api/v1/coffee/")
+    .then(res => {
+      console.log(JSON.stringify(res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 export default App;
