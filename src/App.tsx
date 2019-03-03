@@ -18,8 +18,8 @@ class App extends Component {
     isLoading: true
   };
 
-  public componentDidMount(): void {
-    this.getCoffee();
+  public async componentDidMount() {
+    await this.getCoffee();
   }
 
   public render() {
@@ -55,13 +55,16 @@ class App extends Component {
     );
   }
 
-  private getCoffee() {
-    axios
-      .get("/api/v1/coffee/")
-      .then(res => {
-        this.setState({ coffees: res.data, isLoading: false });
-      })
-      .catch(error => this.setState({ err: error, isLoading: false }));
+  private async getCoffee() {
+    const response = await axios.get("/api/v1/coffee/");
+    try {
+      this.setState({
+        coffees: response.data,
+        isLoading: false
+      });
+    } catch (error) {
+      this.setState({ error, isLoading: false });
+    }
   }
 }
 
