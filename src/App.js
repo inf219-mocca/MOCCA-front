@@ -1,30 +1,14 @@
 import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
 import axios from "axios";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <button type="button" onClick={onClick}>
-            Test
-          </button>
-        </header>
-      </div>
+      <Button variant="contained" color="primary" onClick={onClick}>
+        Ping
+      </Button>
     );
   }
 }
@@ -32,9 +16,9 @@ class App extends Component {
 function onClick(event) {
   console.log("Testing...");
   axios
-    .get("/api/v1/coffee/")
+    .get("/api/v1/coffee/now")
     .then(res => {
-      console.log(JSON.stringify(res.data));
+      console.log(JSON.stringify(res.data, null, 4));
     })
     .catch(err => {
       console.log(err);
