@@ -1,13 +1,14 @@
 import { TableRow } from "@material-ui/core";
 import TableCell from "@material-ui/core/TableCell";
 import React from "react";
+import { duration, powerStatus, TimeField } from "./Util";
 
 interface ICoffee {
   amount: number;
   is_powered: number;
-  measured_at: any;
-  outages: any;
-  started_brewing: any;
+  measured_at: Date;
+  outages: Date;
+  started_brewing: Date;
   temperature: number;
 }
 
@@ -17,18 +18,21 @@ export default class Coffee extends React.Component<ICoffee> {
   }
 
   public render(): React.ReactNode {
+    const power = powerStatus(this.props.is_powered);
+    const outage =
+      this.props.outages === null ? "None" : duration(this.props.outages);
     return (
       <TableRow>
-        <TableCell component="th" scope="row">
-          {this.props.amount}
-        </TableCell>
-        <TableCell align="right">{this.props.is_powered}</TableCell>
-        <TableCell align="right">{this.props.measured_at}</TableCell>
+        <TableCell align="right">{this.props.amount}</TableCell>
+        <TableCell align="right">{power}</TableCell>
         <TableCell align="right">
-          {this.props.outages == null ? "None" : this.props.outages}
+          <TimeField data={this.props.measured_at} />
         </TableCell>
-        <TableCell align="right">{this.props.started_brewing}</TableCell>
-        <TableCell align="right">{this.props.temperature}</TableCell>
+        <TableCell align="right">{outage}</TableCell>
+        <TableCell align="right">
+          <TimeField data={this.props.started_brewing} />
+        </TableCell>
+        <TableCell align="right">{this.props.temperature}C</TableCell>
       </TableRow>
     );
   }
