@@ -1,5 +1,5 @@
 import moment from "moment";
-import React from "react";
+import * as React from "react";
 
 export const powerStatus = (power: number) => {
   switch (power) {
@@ -14,8 +14,12 @@ export const powerStatus = (power: number) => {
   }
 };
 
-export const TimeField = (props: any) => {
-  const from = moment(props.data).fromNow();
+interface IProps {
+  data: Date;
+}
+
+export const TimeField: React.FC<IProps> = props => {
+  const from: string = moment(props.data).fromNow();
   return <time>{from}</time>;
 };
 
