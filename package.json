@@ -10,7 +10,6 @@
   ],
   "repository": "github:inf219-mocca/mocca-front",
   "private": true,
-  "proxy": "http://localhost:8000",
   "dependencies": {
     "@types/jest": "^24.0.9",
     "@types/node": "^11.10.4",
@@ -18,6 +17,7 @@
     "@types/react-dom": "^16.8.2",
     "@types/styled-components": "^4.1.12",
     "axios": "^0.18.0",
+    "http-proxy-middleware": "^0.19.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "moment": "^2.24.0",
