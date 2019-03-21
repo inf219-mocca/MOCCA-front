@@ -15,8 +15,7 @@ are using [ESLint](https://eslint.org/),
 You need to be on a recent version of [Node.js](https://nodejs.org/en/),
 preferably either the latest release or the latest LTS (v11 or v10 as of this
 writing), then you need to have [Yarn](https://yarnpkg.com/en/) installed for
-package management. To install all dependencies run `yarn install
---frozen-lockfile`.
+package management. To install all dependencies run `yarn install --frozen-lockfile`.
 
 ## Configuration and utilities
 
@@ -37,6 +36,12 @@ Runs the app in the development mode. Open
 
 The page will reload if you make edits. You will also see any lint errors in the
 console.
+
+### `yarn start:mock`
+
+The same as above, but also starts a mock server that returns the same API as
+the actual Django app, useful for development so you don't have to start the
+main application just to run the React app.
 
 ### `yarn test`
 
