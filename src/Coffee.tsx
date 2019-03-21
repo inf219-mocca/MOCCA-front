@@ -1,5 +1,3 @@
-import { TableRow } from "@material-ui/core";
-import TableCell from "@material-ui/core/TableCell";
 import * as React from "react";
 import { duration, powerStatus, TimeField } from "./Util";
 
@@ -16,18 +14,18 @@ const Coffee: React.FC<ICoffee> = props => {
   const power = powerStatus(props.is_powered);
   const outage = props.outages === null ? "None" : duration(props.outages);
   return (
-    <TableRow>
-      <TableCell align="right">{props.amount}</TableCell>
-      <TableCell align="right">{power}</TableCell>
-      <TableCell align="right">
+    <tr>
+      <td>{props.amount.toPrecision(2)}</td>
+      <td>{power}</td>
+      <td>
         <TimeField data={props.measured_at} />
-      </TableCell>
-      <TableCell align="right">{outage}</TableCell>
-      <TableCell align="right">
+      </td>
+      <td>{outage}</td>
+      <td>
         <TimeField data={props.started_brewing} />
-      </TableCell>
-      <TableCell align="right">{props.temperature}C</TableCell>
-    </TableRow>
+      </td>
+      <td>{props.temperature}C</td>
+    </tr>
   );
 };
 
