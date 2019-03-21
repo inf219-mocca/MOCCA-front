@@ -18,8 +18,8 @@ const App = () => {
   const [isLoading, setLoading] = useState(true);
 
   async function getCoffee() {
-    const response = await axios.get("/api/v1/coffee/");
     try {
+      const response = await axios.get("/api/v1/coffee/");
       setCoffees(response.data);
       setLoading(false);
     } catch (error) {
@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     getCoffee();
-  });
+  }, []);
 
   return (
     <React.StrictMode>
