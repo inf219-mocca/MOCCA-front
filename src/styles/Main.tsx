@@ -14,6 +14,8 @@ export const MainWrapper = styled.div`
 
   margin: auto;
   max-width: 80vw;
+
+  color: 001f3f;
 `;
 
 export const Header = styled.header`

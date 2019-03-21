@@ -7,6 +7,7 @@ const Global = createGlobalStyle`
 
   html, body {
     height: 100%;
+    background-color: #ddd;
   }
 
   body {

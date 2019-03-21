@@ -17,11 +17,17 @@ export const TableBody = styled.tbody`
     background: #eee;
   }
 
+  tr:nth-child(even) {
+    background: #ddd;
+  }
+
   tr:hover {
     background: #666666;
   }
 `;
 
-export const Td = styled.td``;
+export const Td = styled.td`
+  text-align: center;
+`;
 
 export const Tr = styled.tr``;
