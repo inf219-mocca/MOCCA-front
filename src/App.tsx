@@ -5,6 +5,7 @@ import Coffee, { ICoffee } from "./Coffee";
 import { Table, TableHead, TableBody, Td } from "./styles/Table";
 import { MainWrapper, Header, Main, Footer } from "./styles/Main";
 import Global from "./styles/Global";
+import { H1 } from "./styles/Headers";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
@@ -31,7 +32,7 @@ const App = () => {
       <Global />
       <MainWrapper>
         <Header>
-          <h1>MOCCAPI</h1>
+          <H1>MOCCAPI</H1>
         </Header>
         <Main>
           {!isLoading ? (
