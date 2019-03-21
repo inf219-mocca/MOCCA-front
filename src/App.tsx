@@ -1,26 +1,24 @@
 import axios from "axios";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import "./App.css";
-import Coffee from "./Coffee";
-
-let id = 0;
+import Coffee, { ICoffee } from "./Coffee";
+import { Table, TableHead, TableBody, Td } from "./styles/Table";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
-  async function getCoffee() {
+  const getCoffee = async () => {
+    const response = await axios.get("/api/v1/coffee/");
     try {
-      const response = await axios.get("/api/v1/coffee/");
       setCoffees(response.data);
       setLoading(false);
     } catch (error) {
       setError(error);
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     getCoffee();
@@ -31,23 +29,23 @@ const App = () => {
       <h1>MOCCAPI</h1>
       <hr />
       {!isLoading ? (
-        <table>
-          <thead>
+        <Table>
+          <TableHead>
             <tr>
-              <td>Amount</td>
-              <td>Power</td>
-              <td>Measured</td>
-              <td>Outages</td>
-              <td>Started brewing</td>
-              <td>Temperature</td>
+              <Td>Amount</Td>
+              <Td>Power</Td>
+              <Td>Measured</Td>
+              <Td>Outages</Td>
+              <Td>Started brewing</Td>
+              <Td>Temperature</Td>
             </tr>
-          </thead>
-          <tbody>
-            {coffees.map(coffee => {
-              return <Coffee {...coffee} key={id++} />;
+          </TableHead>
+          <TableBody>
+            {coffees.map((coffee: ICoffee) => {
+              return <Coffee {...coffee} key={coffee.id} />;
             })}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       ) : (
         <p>Loading...</p>
       )}

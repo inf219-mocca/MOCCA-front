@@ -1,7 +1,9 @@
 import * as React from "react";
 import { duration, powerStatus, TimeField } from "./Util";
+import { Tr, Td } from "./styles/Table";
 
-interface ICoffee {
+export interface ICoffee {
+  id: number;
   amount: number;
   is_powered: number;
   measured_at: Date;
@@ -14,18 +16,18 @@ const Coffee: React.FC<ICoffee> = props => {
   const power = powerStatus(props.is_powered);
   const outage = props.outages === null ? "None" : duration(props.outages);
   return (
-    <tr>
-      <td>{props.amount.toPrecision(2)}</td>
-      <td>{power}</td>
-      <td>
+    <Tr>
+      <Td>{props.amount.toPrecision(2)}</Td>
+      <Td>{power}</Td>
+      <Td>
         <TimeField data={props.measured_at} />
-      </td>
-      <td>{outage}</td>
-      <td>
+      </Td>
+      <Td>{outage}</Td>
+      <Td>
         <TimeField data={props.started_brewing} />
-      </td>
-      <td>{props.temperature}C</td>
-    </tr>
+      </Td>
+      <Td>{props.temperature}C</Td>
+    </Tr>
   );
 };
 
