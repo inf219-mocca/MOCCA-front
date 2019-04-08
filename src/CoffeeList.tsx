@@ -1,6 +1,6 @@
 import * as React from "react";
 import { duration, powerStatus, TimeField } from "./Util";
-import { Tr, Td } from "./styles/Table";
+import { Tr, Td, Table, TableHead, TableBody } from "./styles/Table";
 import { ICoffee } from "./Coffee";
 
 const CoffeeList: React.FC<ICoffee> = ({
@@ -29,4 +29,26 @@ const CoffeeList: React.FC<ICoffee> = ({
   );
 };
 
-export default CoffeeList;
+const CoffeeTable: React.FC<Array<ICoffee>> = props => {
+  return (
+    <Table>
+      <TableHead>
+        <tr>
+          <Td>Amount</Td>
+          <Td>Power</Td>
+          <Td>Measured</Td>
+          <Td>Outages</Td>
+          <Td>Started brewing</Td>
+          <Td>Temperature</Td>
+        </tr>
+      </TableHead>
+      <TableBody>
+        {Object.values(props).map((coffee: ICoffee) => (
+          <CoffeeList {...coffee} key={coffee.id} />
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
+export default CoffeeTable;
