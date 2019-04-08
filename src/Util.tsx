@@ -1,7 +1,7 @@
 import moment, { Duration } from "moment";
 import * as React from "react";
 
-export const powerStatus = (power: number) => {
+export const powerStatus = (power: number): string => {
   switch (power) {
     case 0:
       return "Off";

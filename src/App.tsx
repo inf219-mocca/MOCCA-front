@@ -5,25 +5,29 @@ import { MainWrapper, Header, Main, Footer } from "./styles/Main";
 import Global from "./styles/Global";
 import { H1 } from "./styles/Headers";
 import CoffeeTable from "./CoffeeList";
+import Coffee from "./Coffee";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
-  const [error, setError] = useState(null);
+  const [latestCoffee, setLatestCoffee] = useState();
+  const [, setError] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
-  const getCoffee = async () => {
-    const response = await axios.get("/api/v1/coffee/");
+  const getCoffees = async () => {
+    const respCoffees = await axios.get("/api/v1/coffee/");
+    const respLatest = await axios.get("/api/v1/coffee/now");
     try {
-      setCoffees(response.data);
+      setCoffees(respCoffees.data);
+      setLatestCoffee(respLatest.data);
       setLoading(false);
-    } catch (error) {
-      setError(error);
+    } catch (err) {
+      setError(err);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    getCoffee();
+    getCoffees();
   }, []);
 
   return (
@@ -34,9 +38,18 @@ const App = () => {
           <H1>MOCCAPI</H1>
         </Header>
         <Main>
-          {!isLoading ? <CoffeeTable {...coffees} /> : <p>Loading...</p>}
+          {!isLoading ? (
+            <div>
+              <Coffee {...latestCoffee} />
+              <CoffeeTable {...coffees} />
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
         </Main>
-        <Footer>Hello world!</Footer>
+        <Footer>
+          Made with <span>❤</span> ️by Eivind and Sondre
+        </Footer>
       </MainWrapper>
     </React.StrictMode>
   );
