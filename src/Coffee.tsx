@@ -4,29 +4,36 @@ import { Tr, Td } from "./styles/Table";
 
 export interface ICoffee {
   id: number;
+  measured_at: Date;
+  temperature: number;
   amount: number;
   is_powered: number;
-  measured_at: Date;
-  outages: Date;
-  started_brewing: Date;
-  temperature: number;
+  brew_started: Date;
+  brew_outages: Date;
 }
 
-const Coffee: React.FC<ICoffee> = props => {
-  const power = powerStatus(props.is_powered);
-  const outage = props.outages === null ? "None" : duration(props.outages);
+const Coffee: React.FC<ICoffee> = ({
+  measured_at,
+  temperature,
+  amount,
+  is_powered,
+  brew_started,
+  brew_outages
+}) => {
+  const power = powerStatus(is_powered);
+  const outage = brew_outages === null ? "None" : duration(brew_outages);
   return (
     <Tr>
-      <Td>{props.amount.toPrecision(2)}</Td>
+      <Td>{amount.toPrecision(2)}</Td>
       <Td>{power}</Td>
       <Td>
-        <TimeField data={props.measured_at} />
+        <TimeField data={measured_at} />
       </Td>
       <Td>{outage}</Td>
       <Td>
-        <TimeField data={props.started_brewing} />
+        <TimeField data={brew_started} />
       </Td>
-      <Td>{props.temperature}C</Td>
+      <Td>{temperature}C</Td>
     </Tr>
   );
 };

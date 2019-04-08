@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import Coffee, { ICoffee } from "./Coffee";
+import CoffeeTable, { ICoffee } from "./Coffee";
 import { Table, TableHead, TableBody, Td } from "./styles/Table";
 import { MainWrapper, Header, Main, Footer } from "./styles/Main";
 import Global from "./styles/Global";
@@ -49,7 +49,7 @@ const App = () => {
               </TableHead>
               <TableBody>
                 {coffees.map((coffee: ICoffee) => {
-                  return <Coffee {...coffee} key={coffee.id} />;
+                  return <CoffeeTable {...coffee} key={coffee.id} />;
                 })}
               </TableBody>
             </Table>
