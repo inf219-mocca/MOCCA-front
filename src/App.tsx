@@ -1,11 +1,12 @@
 import axios from "axios";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import CoffeeTable, { ICoffee } from "./Coffee";
+import CoffeeList from "./CoffeeList";
 import { Table, TableHead, TableBody, Td } from "./styles/Table";
 import { MainWrapper, Header, Main, Footer } from "./styles/Main";
 import Global from "./styles/Global";
 import { H1 } from "./styles/Headers";
+import { ICoffee } from "./Coffee";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
@@ -48,9 +49,9 @@ const App = () => {
                 </tr>
               </TableHead>
               <TableBody>
-                {coffees.map((coffee: ICoffee) => {
-                  return <CoffeeTable {...coffee} key={coffee.id} />;
-                })}
+                {coffees.map((coffee: ICoffee) => (
+                  <CoffeeList {...coffee} key={coffee.id} />
+                ))}
               </TableBody>
             </Table>
           ) : (
