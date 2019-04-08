@@ -4,11 +4,11 @@ import * as React from "react";
 export const powerStatus = (power: number) => {
   switch (power) {
     case 0:
-      return "Brewing";
+      return "Off";
     case 1:
       return "Heating";
     case 2:
-      return "Off";
+      return "Brewing";
     default:
       return "ERROR";
   }
