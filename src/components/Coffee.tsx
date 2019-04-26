@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { powerStatus, duration } from "./Util";
+import { duration, powerStatus } from "../utils";
 
 const CoffeeBox = styled.div`
   display: flex;
@@ -20,9 +20,9 @@ export interface ICoffee {
   brew_outages: Date;
 }
 
-const coffeePowerText = (is_powered: number): string => {
-  let power = powerStatus(is_powered).toLowerCase();
-  switch (is_powered) {
+const coffeePowerText = (isPowered: number): string => {
+  const power = powerStatus(isPowered).toLowerCase();
+  switch (isPowered) {
     case 0:
       return `The coffee is ${power}, oh no :(`;
     case 1:
@@ -34,8 +34,8 @@ const coffeePowerText = (is_powered: number): string => {
   }
 };
 
-const coffeeOutageText = (brew_outages: Date): string => {
-  const outage = brew_outages === null ? "None" : duration(brew_outages);
+const coffeeOutageText = (brewOutages: Date): string => {
+  const outage = brewOutages === null ? "None" : duration(brewOutages);
   if (outage === "None") {
     return "It's been kept hot the whole time, nice!";
   } else {

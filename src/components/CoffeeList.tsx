@@ -1,6 +1,6 @@
 import * as React from "react";
-import { duration, powerStatus, TimeField } from "./Util";
-import { Tr, Td, Table, TableHead, TableBody } from "./styles/Table";
+import { Table, TableBody, TableHead, Td, Tr } from "../styles/Table";
+import { duration, powerStatus, TimeField } from "../utils";
 import { ICoffee } from "./Coffee";
 
 const CoffeeList: React.FC<ICoffee> = ({
@@ -29,7 +29,7 @@ const CoffeeList: React.FC<ICoffee> = ({
   );
 };
 
-const CoffeeTable: React.FC<Array<ICoffee>> = props => {
+const CoffeeTable: React.FC<ICoffee[]> = props => {
   return (
     <Table>
       <TableHead>

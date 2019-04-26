@@ -24,6 +24,6 @@ export const TimeField: React.FC<IProps> = ({ data }) => {
 };
 
 export const duration = (date: any) => {
-  const duration: Duration = moment.duration(date);
-  return duration.seconds() <= 10 ? "None" : duration.seconds();
+  const dur: Duration = moment.duration(date);
+  return dur.seconds() <= 10 ? "None" : dur.seconds();
 };

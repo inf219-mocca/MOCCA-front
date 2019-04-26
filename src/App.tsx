@@ -1,11 +1,11 @@
 import axios from "axios";
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { MainWrapper, Header, Main, Footer } from "./styles/Main";
+import { useEffect, useState } from "react";
+import Coffee from "./components/Coffee";
+import CoffeeTable from "./components/CoffeeList";
 import Global from "./styles/Global";
 import { H1 } from "./styles/Headers";
-import CoffeeTable from "./CoffeeList";
-import Coffee from "./Coffee";
+import { Footer, Header, Main, MainWrapper } from "./styles/Main";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
