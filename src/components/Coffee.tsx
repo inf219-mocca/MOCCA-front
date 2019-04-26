@@ -1,4 +1,5 @@
 import * as React from "react";
+import ReactSVG from "react-svg";
 import styled from "styled-components";
 import { duration, powerStatus } from "../utils";
 
@@ -52,6 +53,9 @@ const Coffee: React.FC<ICoffee> = ({
 }) => {
   return (
     <CoffeeBox>
+      <span>
+        <ReactSVG src="icons/full.svg" svgStyle={{ width: 100, height: 100 }} />
+      </span>
       <p>
         {coffeePowerText(is_powered)}
         <br />
