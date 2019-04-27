@@ -45,13 +45,13 @@ const Coffee: React.FC<ICoffee> = ({
 }) => {
   return (
     <section className="coffee">
-      <p className="coffeeBrewTimer">
-        The coffee has been brewing for {duration(brew_started)}.
-      </p>
       {is_powered === 2 && <CoffeeBrewing brewStarted={brew_started} />}
       {is_powered === 1 && (
         <CoffeeHeating brewStarted={brew_started} amount={amount} />
       )}
+      <p className="coffeeBrewTimer">
+        The coffee has been brewing for {duration(brew_started)}.
+      </p>
       <p>
         <br />
         {is_powered > 2 ? coffeeOutageText(brew_outages) : ""}
