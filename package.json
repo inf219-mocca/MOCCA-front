@@ -2,7 +2,7 @@
   "name": "mocca-front",
   "version": "0.1.0",
   "description": "Frontend for MOCCAPI",
-  "homepage": "https://github.com/inf219-mocca/mocca-front",
+  "homepage": ".",
   "license": "MIT",
   "maintainers": [
     "Eivind Dagsland Halderaker <> ()",
