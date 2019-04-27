@@ -1,7 +1,6 @@
 import { useState } from "react";
 import * as React from "react";
 import useInterval from "../utils/useInterval";
-import { duration } from "../utils";
 
 interface ICoffeeBrew {
   brewStarted: Date;

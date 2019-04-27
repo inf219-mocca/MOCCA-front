@@ -1,7 +1,8 @@
 import * as React from "react";
-import { timeSince, powerStatus, duration } from "../utils";
 import CoffeeBrewing from "./CoffeeBrewing";
 import CoffeeHeating from "./CoffeeHeating";
+import CoffeeOff from "./CoffeeOff";
+import CoffeeStatus from "./CoffeeStatus";
 
 export interface ICoffee {
   id: number;
@@ -12,29 +13,6 @@ export interface ICoffee {
   brew_started: Date;
   brew_outages: Date;
 }
-
-const coffeePowerText = (isPowered: number): string => {
-  const power = powerStatus(isPowered).toLowerCase();
-  switch (isPowered) {
-    case 0:
-      return `The coffee is ${power}, oh no :(`;
-    case 1:
-      return `The coffee is ${power}.`;
-    case 2:
-      return "";
-    default:
-      return `Whoops...`;
-  }
-};
-
-const coffeeOutageText = (brewOutages: Date): string => {
-  const outage = brewOutages === null ? "None" : timeSince(brewOutages);
-  if (outage === "None") {
-    return "It's been kept hot the whole time, nice!";
-  } else {
-    return `The coffee has lost power for ${outage}.`;
-  }
-};
 
 const Coffee: React.FC<ICoffee> = ({
   measured_at,
@@ -50,13 +28,12 @@ const Coffee: React.FC<ICoffee> = ({
       {is_powered === 1 && (
         <CoffeeHeating amount={amount} temperature={temperature} />
       )}
-      <p className="coffeeBrewTimer">
-        The coffee has been brewing for {duration(brew_started)}.
-      </p>
-      <p>
-        <br />
-        {is_powered > 2 ? coffeeOutageText(brew_outages) : ""}
-      </p>
+      {is_powered === 0 && <CoffeeOff />}
+      <CoffeeStatus
+        brewStarted={brew_started}
+        isPowered={is_powered}
+        brewOutages={brew_outages}
+      />
     </section>
   );
 };
