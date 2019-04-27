@@ -1,4 +1,5 @@
 html {
+  height: 100%;
   font-family: "Roboto Slab", serif;
   background-color: #ddd;
 }
@@ -13,10 +14,10 @@ h1 {
     "header"
     "content"
     "footer";
-  grid-template-rows: 50px 1fr 100px;
+  grid-template-rows: 50px 1fr auto;
   grid-template-columns: 1fr;
   grid-gap: 10px;
-  height: 100vh;
+  min-height: 90vh;
   margin: auto;
   max-width: 80vw;
 
@@ -43,7 +44,7 @@ nav {
   color: black;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   nav {
     grid-template-columns: 100%;
     grid-template-rows: auto;
@@ -53,13 +54,14 @@ nav {
 
 main {
   grid-area: content;
+  display: grid;
+  place-items: center center;
 }
 
 footer {
   grid-area: footer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center center;
 }
 
 table {
@@ -97,7 +99,6 @@ td {
     "icon status";
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
 }
 
 .coffeeBrewTimer {
