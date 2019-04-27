@@ -1,15 +1,6 @@
 import * as React from "react";
-import styled from "styled-components";
 import { duration, powerStatus } from "../utils";
 import CoffeeBrewing from "./CoffeeBrewing";
-
-const CoffeeBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  padding-bottom: 40px;
-`;
 
 export interface ICoffee {
   id: number;
@@ -52,13 +43,13 @@ const Coffee: React.FC<ICoffee> = ({
   brew_outages
 }) => {
   return (
-    <CoffeeBox>
+    <section className="coffee">
       {is_powered === 2 ? <CoffeeBrewing /> : coffeePowerText(is_powered)}
       <p>
         <br />
         {is_powered > 2 ? coffeeOutageText(brew_outages) : ""}
       </p>
-    </CoffeeBox>
+    </section>
   );
 };
 

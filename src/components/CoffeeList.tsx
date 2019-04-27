@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Table, TableBody, TableHead, Td, Tr } from "../styles/Table";
 import { duration, powerStatus, TimeField } from "../utils";
 import { ICoffee } from "./Coffee";
 
@@ -14,40 +13,40 @@ const CoffeeList: React.FC<ICoffee> = ({
   const power = powerStatus(is_powered);
   const outage = brew_outages === null ? "None" : duration(brew_outages);
   return (
-    <Tr>
-      <Td>{amount.toPrecision(2)}</Td>
-      <Td>{power}</Td>
-      <Td>
+    <tr>
+      <td>{amount.toPrecision(2)}</td>
+      <td>{power}</td>
+      <td>
         <TimeField data={measured_at} />
-      </Td>
-      <Td>{outage}</Td>
-      <Td>
+      </td>
+      <td>{outage}</td>
+      <td>
         <TimeField data={brew_started} />
-      </Td>
-      <Td>{temperature}C</Td>
-    </Tr>
+      </td>
+      <td>{temperature}C</td>
+    </tr>
   );
 };
 
 const CoffeeTable: React.FC<ICoffee[]> = props => {
   return (
-    <Table>
-      <TableHead>
+    <table>
+      <thead>
         <tr>
-          <Td>Amount</Td>
-          <Td>Power</Td>
-          <Td>Measured</Td>
-          <Td>Outages</Td>
-          <Td>Started brewing</Td>
-          <Td>Temperature</Td>
+          <td>Amount</td>
+          <td>Power</td>
+          <td>Measured</td>
+          <td>Outages</td>
+          <td>Started brewing</td>
+          <td>Temperature</td>
         </tr>
-      </TableHead>
-      <TableBody>
+      </thead>
+      <tbody>
         {Object.values(props).map((coffee: ICoffee) => (
           <CoffeeList {...coffee} key={coffee.id} />
         ))}
-      </TableBody>
-    </Table>
+      </tbody>
+    </table>
   );
 };
 

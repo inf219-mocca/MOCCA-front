@@ -3,9 +3,6 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import Coffee from "./components/Coffee";
 import CoffeeTable from "./components/CoffeeList";
-import Global from "./styles/Global";
-import { H1 } from "./styles/Headers";
-import { Footer, Header, Main, MainWrapper } from "./styles/Main";
 import useInterval from "./utils/useInterval";
 
 const App = () => {
@@ -37,12 +34,11 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <Global />
-      <MainWrapper>
-        <Header>
-          <H1>MOCCAPI</H1>
-        </Header>
-        <Main>
+      <main>
+        <header>
+          <h1>MOCCAPI</h1>
+        </header>
+        <div className="main">
           {!isLoading ? (
             <div>
               <Coffee {...latestCoffee} />
@@ -51,11 +47,11 @@ const App = () => {
           ) : (
             <p>Loading...</p>
           )}
-        </Main>
-        <Footer>
+        </div>
+        <footer>
           Made with <span>❤</span> ️by Eivind and Sondre
-        </Footer>
-      </MainWrapper>
+        </footer>
+      </main>
     </React.StrictMode>
   );
 };
