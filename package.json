@@ -25,7 +25,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
-    "react-svg": "^9.0.2",
     "styled-components": "^4.2.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

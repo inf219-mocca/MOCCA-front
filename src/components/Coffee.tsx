@@ -1,7 +1,7 @@
 import * as React from "react";
-import ReactSVG from "react-svg";
 import styled from "styled-components";
 import { duration, powerStatus } from "../utils";
+import CoffeeBrewing from "./CoffeeBrewing";
 
 const CoffeeBox = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ const coffeePowerText = (isPowered: number): string => {
     case 1:
       return `The coffee is ${power}.`;
     case 2:
-      return `The coffee is ${power}, you should wait a little...`;
+      return "";
     default:
       return `Whoops...`;
   }
@@ -53,11 +53,8 @@ const Coffee: React.FC<ICoffee> = ({
 }) => {
   return (
     <CoffeeBox>
-      <span>
-        <ReactSVG src="icons/full.svg" svgStyle={{ width: 100, height: 100 }} />
-      </span>
+      {is_powered === 2 ? <CoffeeBrewing /> : coffeePowerText(is_powered)}
       <p>
-        {coffeePowerText(is_powered)}
         <br />
         {is_powered > 2 ? coffeeOutageText(brew_outages) : ""}
       </p>
