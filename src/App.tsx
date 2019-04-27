@@ -6,6 +6,7 @@ import CoffeeTable from "./components/CoffeeList";
 import Global from "./styles/Global";
 import { H1 } from "./styles/Headers";
 import { Footer, Header, Main, MainWrapper } from "./styles/Main";
+import useInterval from "./utils/useInterval";
 
 const App = () => {
   const [coffees, setCoffees] = useState([]);
@@ -29,6 +30,10 @@ const App = () => {
   useEffect(() => {
     getCoffees();
   }, []);
+
+  useInterval(() => {
+    getCoffees();
+  }, 10000);
 
   return (
     <React.StrictMode>
