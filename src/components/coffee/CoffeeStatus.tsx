@@ -27,8 +27,8 @@ const CoffeeStatus: React.FC<ICoffeeStatus> = ({
         <p className="coffeeBrewTimer">The coffee has no power, go save it!</p>
       ) : (
         <p className="coffeeBrewTimer">
-          The coffee is off... The coffee has been brewing for{" "}
-          {duration(brewStarted)}, {coffeeOutageText(brewOutages)}.
+          The coffee has been brewing for {duration(brewStarted)},{" "}
+          {coffeeOutageText(brewOutages)}.
         </p>
       )}
     </>
