@@ -1,8 +1,13 @@
 import { useState } from "react";
 import * as React from "react";
 import useInterval from "../utils/useInterval";
+import { duration } from "../utils";
 
-const CoffeeBrewing: React.FC = () => {
+interface ICoffeeBrew {
+  brewStarted: Date;
+}
+
+const CoffeeBrewing: React.FC<ICoffeeBrew> = ({ brewStarted }) => {
   const [image, setImage] = useState("icons/empty.svg");
   const [id, setID] = useState(0);
   const images = ["icons/empty.svg", "icons/half.svg", "icons/full.svg"];
@@ -19,7 +24,10 @@ const CoffeeBrewing: React.FC = () => {
         alt="Coffee brewing transitions"
         style={{ width: 100, height: 100 }}
       />
-      <p>The coffee is brewing, just hang on a little!</p>
+      <p>
+        The coffee has been brewing for {duration(brewStarted)}, just hang on a
+        little!
+      </p>
     </>
   );
 };

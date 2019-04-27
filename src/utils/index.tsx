@@ -23,7 +23,11 @@ export const TimeField: React.FC<IProps> = ({ data }) => {
   return <time>{from}</time>;
 };
 
-export const duration = (date: any) => {
+export const timeSince = (date: any) => {
   const dur: Duration = moment.duration(date);
   return dur.seconds() <= 10 ? "None" : dur.seconds();
+};
+
+export const duration = (date: Date) => {
+  return moment(date).fromNow(true);
 };

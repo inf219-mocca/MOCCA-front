@@ -1,5 +1,5 @@
 import * as React from "react";
-import { duration, powerStatus } from "../utils";
+import { timeSince, powerStatus } from "../utils";
 import CoffeeBrewing from "./CoffeeBrewing";
 
 export interface ICoffee {
@@ -27,7 +27,7 @@ const coffeePowerText = (isPowered: number): string => {
 };
 
 const coffeeOutageText = (brewOutages: Date): string => {
-  const outage = brewOutages === null ? "None" : duration(brewOutages);
+  const outage = brewOutages === null ? "None" : timeSince(brewOutages);
   if (outage === "None") {
     return "It's been kept hot the whole time, nice!";
   } else {
@@ -44,7 +44,11 @@ const Coffee: React.FC<ICoffee> = ({
 }) => {
   return (
     <section className="coffee">
-      {is_powered === 2 ? <CoffeeBrewing /> : coffeePowerText(is_powered)}
+      {is_powered === 2 ? (
+        <CoffeeBrewing brewStarted={brew_started} />
+      ) : (
+        coffeePowerText(is_powered)
+      )}
       <p>
         <br />
         {is_powered > 2 ? coffeeOutageText(brew_outages) : ""}

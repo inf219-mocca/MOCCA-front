@@ -1,5 +1,5 @@
 import * as React from "react";
-import { duration, powerStatus, TimeField } from "../utils";
+import { timeSince, powerStatus, TimeField } from "../utils";
 import { ICoffee } from "./Coffee";
 
 const CoffeeList: React.FC<ICoffee> = ({
@@ -11,7 +11,7 @@ const CoffeeList: React.FC<ICoffee> = ({
   brew_outages
 }) => {
   const power = powerStatus(is_powered);
-  const outage = brew_outages === null ? "None" : duration(brew_outages);
+  const outage = brew_outages === null ? "None" : timeSince(brew_outages);
   return (
     <tr>
       <td>{amount.toPrecision(2)}</td>
