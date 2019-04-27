@@ -3,6 +3,8 @@ import Coffee from "./components/coffee/Coffee";
 import CoffeeTable from "./components/coffee/CoffeeList";
 import Nav from "./components/containers/Nav";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./styles/sanitize.css";
+import "./styles/style.css";
 
 const App = () => {
   return (
