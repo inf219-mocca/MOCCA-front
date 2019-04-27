@@ -22,12 +22,9 @@ const CoffeeBrewing: React.FC<ICoffeeBrew> = ({ brewStarted }) => {
       <img
         src={image}
         alt="Coffee brewing transitions"
-        style={{ width: 100, height: 100 }}
+        className="coffeeIcon"
       />
-      <p>
-        The coffee has been brewing for {duration(brewStarted)}, just hang on a
-        little!
-      </p>
+      <p>It's nearly done, just hang on a little!</p>
     </>
   );
 };

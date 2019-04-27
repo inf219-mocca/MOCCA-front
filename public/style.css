@@ -78,9 +78,28 @@ td {
 }
 
 .coffee {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    "icon info"
+    "icon status";
   justify-content: center;
   align-items: center;
   font-size: 22px;
   padding-bottom: 40px;
+}
+
+.coffeeBrewTimer {
+  grid-area: info;
+  font-size: 16px;
+}
+
+.coffeeStatus {
+  grid-area: status;
+}
+
+.coffeeIcon {
+  grid-area: icon;
+  width: 100px;
+  height: 100px;
+  padding-right: 20px;
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
-import { timeSince, powerStatus } from "../utils";
+import { timeSince, powerStatus, duration } from "../utils";
 import CoffeeBrewing from "./CoffeeBrewing";
+import CoffeeHeating from "./CoffeeHeating";
 
 export interface ICoffee {
   id: number;
@@ -44,10 +45,12 @@ const Coffee: React.FC<ICoffee> = ({
 }) => {
   return (
     <section className="coffee">
-      {is_powered === 2 ? (
-        <CoffeeBrewing brewStarted={brew_started} />
-      ) : (
-        coffeePowerText(is_powered)
+      <p className="coffeeBrewTimer">
+        The coffee has been brewing for {duration(brew_started)}.
+      </p>
+      {is_powered === 2 && <CoffeeBrewing brewStarted={brew_started} />}
+      {is_powered === 1 && (
+        <CoffeeHeating brewStarted={brew_started} amount={amount} />
       )}
       <p>
         <br />
