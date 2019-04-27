@@ -37,7 +37,9 @@ const CoffeeTable: React.FC = () => {
   const [error, setError] = useState(null);
 
   const getCoffees = async () => {
-    const res = await axios.get("/api/v1/coffee/");
+    const res = await axios
+      .create({ baseURL: "http://localhost:8000" })
+      .get("/api/v1/coffee/");
     try {
       setCoffees(res.data);
       setLoading(false);
