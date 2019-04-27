@@ -44,14 +44,6 @@ nav {
   color: black;
 }
 
-@media screen and (max-width: 768px) {
-  nav {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-gap: 1em;
-  }
-}
-
 main {
   grid-area: content;
   display: grid;
@@ -90,6 +82,72 @@ tbody tr:hover {
 
 td {
   text-align: center;
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  nav {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  table {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    font-weight: bold;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Amount";
+  }
+  td:nth-of-type(2):before {
+    content: "Power";
+  }
+  td:nth-of-type(3):before {
+    content: "Measured";
+  }
+  td:nth-of-type(4):before {
+    content: "Outages";
+  }
+  td:nth-of-type(5):before {
+    content: "Started brewing";
+  }
+  td:nth-of-type(6):before {
+    content: "Temperature";
+  }
+
+  .container {
+    max-width: 98vw;
+  }
 }
 
 .coffee {
