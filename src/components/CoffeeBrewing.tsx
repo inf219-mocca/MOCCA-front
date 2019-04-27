@@ -24,7 +24,7 @@ const CoffeeBrewing: React.FC<ICoffeeBrew> = ({ brewStarted }) => {
         alt="Coffee brewing transitions"
         className="coffeeIcon"
       />
-      <p>It's nearly done, just hang on a little!</p>
+      <p className="coffeeStatus">It's nearly done, just hang on a little!</p>
     </>
   );
 };

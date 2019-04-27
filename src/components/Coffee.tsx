@@ -41,13 +41,14 @@ const Coffee: React.FC<ICoffee> = ({
   amount,
   is_powered,
   brew_started,
-  brew_outages
+  brew_outages,
+  temperature
 }) => {
   return (
     <section className="coffee">
       {is_powered === 2 && <CoffeeBrewing brewStarted={brew_started} />}
       {is_powered === 1 && (
-        <CoffeeHeating brewStarted={brew_started} amount={amount} />
+        <CoffeeHeating amount={amount} temperature={temperature} />
       )}
       <p className="coffeeBrewTimer">
         The coffee has been brewing for {duration(brew_started)}.

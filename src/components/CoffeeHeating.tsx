@@ -1,9 +1,8 @@
-import { useState } from "react";
 import * as React from "react";
 
 interface ICoffeeHeating {
-  brewStarted: Date;
   amount: number;
+  temperature: number;
 }
 
 const amountIcon = (amount: number) => {
@@ -18,20 +17,49 @@ const amountIcon = (amount: number) => {
 
 const statusText = (amount: number) => {
   if (amount <= 0.33) {
-    return "";
+    return "nearly empty";
   } else if (amount >= 0.34 && amount <= 0.66) {
-    return "icons/half.svg";
+    return "half full";
   } else if (amount >= 0.67) {
-    return "icons/full.svg";
+    return "full";
   }
 };
 
-const CoffeeHeating: React.FC<ICoffeeHeating> = ({ brewStarted, amount }) => {
+const flavorText = (amount: number, temperature: number) => {
+  if (temperature < 25) {
+    return "go make a new one";
+  }
+
+  if (amount <= 0.33 && temperature >= 45) {
+    return "you better run";
+  } else if (amount >= 0.34 && amount <= 0.66) {
+    return "you have some time";
+  } else if (amount >= 0.67) {
+    return "relax";
+  }
+};
+
+const heatText = (temperature: number) => {
+  if (temperature >= 65) {
+    return "hot";
+  } else if (temperature < 65 && temperature >= 45) {
+    return "warm";
+  } else if (temperature < 45 && temperature >= 30) {
+    return "lukewarm";
+  } else {
+    return "cold";
+  }
+};
+
+const CoffeeHeating: React.FC<ICoffeeHeating> = ({ amount, temperature }) => {
   const icon = amountIcon(amount);
   return (
     <>
       <img src={icon} alt="Coffee amount icon" className="coffeeIcon" />
-      <p className="coffeStatus">The coffee is ready, get it while its hot!</p>
+      <p className="coffeeStatus">
+        It is {statusText(amount)} and {heatText(temperature)},{" "}
+        {flavorText(amount, temperature)}.
+      </p>
     </>
   );
 };
