@@ -12,7 +12,7 @@ export interface ICoffee {
   measured_at: Date;
   temperature: number;
   amount: number;
-  is_powered: number;
+  status: number;
   brew_started: Date;
   brew_outages: Date;
 }
@@ -54,22 +54,22 @@ const Coffee: React.FC = () => {
   const {
     temperature,
     amount,
-    is_powered,
-    brew_started,
-    brew_outages
+    status,
+    brew_started: brewStarted,
+    brew_outages: brewOutages
   }: ICoffee = coffee;
 
   return (
     <section className="coffee">
-      {is_powered === 2 && <CoffeeBrewing brewStarted={brew_started} />}
-      {is_powered === 1 && (
+      {status === 2 && <CoffeeBrewing brewStarted={brewStarted} />}
+      {status === 1 && (
         <CoffeeHeating amount={amount} temperature={temperature} />
       )}
-      {is_powered === 0 && <CoffeeOff />}
+      {status === 0 && <CoffeeOff />}
       <CoffeeStatus
-        brewStarted={brew_started}
-        isPowered={is_powered}
-        brewOutages={brew_outages}
+        brewStarted={brewStarted}
+        status={status}
+        brewOutages={brewOutages}
       />
     </section>
   );

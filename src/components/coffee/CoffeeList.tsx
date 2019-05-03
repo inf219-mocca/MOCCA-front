@@ -9,12 +9,12 @@ const CoffeeList: React.FC<ICoffee> = ({
   measured_at,
   temperature,
   amount,
-  is_powered,
-  brew_started,
-  brew_outages
+  status,
+  brew_started: brewStarted,
+  brew_outages: brewOutages
 }) => {
-  const power = powerStatus(is_powered);
-  const outage = brew_outages === null ? "None" : timeSince(brew_outages);
+  const power = powerStatus(status);
+  const outage = brewOutages === null ? "None" : timeSince(brewOutages);
   return (
     <tr>
       <td>{amount.toPrecision(2)}</td>
@@ -24,7 +24,7 @@ const CoffeeList: React.FC<ICoffee> = ({
       </td>
       <td>{outage}</td>
       <td>
-        <TimeField data={brew_started} />
+        <TimeField data={brewStarted} />
       </td>
       <td>{temperature}C</td>
     </tr>

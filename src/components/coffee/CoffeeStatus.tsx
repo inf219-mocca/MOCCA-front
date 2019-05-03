@@ -4,7 +4,7 @@ import { duration, timeSince } from "../../utils";
 interface ICoffeeStatus {
   brewOutages: Date;
   brewStarted: Date;
-  isPowered: number;
+  status: number;
 }
 
 const coffeeOutageText = (brewOutages: Date): string => {
@@ -18,12 +18,12 @@ const coffeeOutageText = (brewOutages: Date): string => {
 
 const CoffeeStatus: React.FC<ICoffeeStatus> = ({
   brewStarted,
-  isPowered,
+  status,
   brewOutages
 }) => {
   return (
     <>
-      {isPowered === 0 ? (
+      {status === 0 ? (
         <p className="coffeeBrewTimer">The coffee has no power, go save it!</p>
       ) : (
         <p className="coffeeBrewTimer">
