@@ -1,4 +1,4 @@
-import moment, { Duration } from "moment";
+import moment from "moment";
 import * as React from "react";
 
 export const powerStatus = (power: number): string => {
@@ -24,8 +24,7 @@ export const TimeField: React.FC<IProps> = ({ data }) => {
 };
 
 export const timeSince = (date: any) => {
-  const dur: Duration = moment.duration(date);
-  return dur.seconds() <= 10 ? "None" : dur.seconds();
+  return moment.duration(date);
 };
 
 export const duration = (date: Date) => {

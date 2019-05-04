@@ -6,6 +6,7 @@ import CoffeeStatus from "./CoffeeStatus";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import useInterval from "../../utils/useInterval";
+import { Duration } from "moment";
 
 export interface ICoffee {
   id: number;
@@ -14,7 +15,7 @@ export interface ICoffee {
   amount: number;
   status: number;
   brew_started: Date;
-  brew_outages: Date;
+  brew_outages: Duration;
 }
 
 const Coffee: React.FC = () => {

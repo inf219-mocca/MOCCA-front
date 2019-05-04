@@ -1,18 +1,19 @@
 import * as React from "react";
 import { duration, timeSince } from "../../utils";
+import { Duration } from "moment";
 
 interface ICoffeeStatus {
-  brewOutages: Date;
+  brewOutages: Duration;
   brewStarted: Date;
   status: number;
 }
 
-const coffeeOutageText = (brewOutages: Date): string => {
-  const outage = brewOutages === null ? "None" : timeSince(brewOutages);
-  if (outage === "None") {
+const coffeeOutageText = (brewOutages: Duration): string => {
+  const outage = timeSince(brewOutages);
+  if (outage.asSeconds() <= 10) {
     return "without losing power";
   } else {
-    return `, but has lost power for ${outage}.`;
+    return `, but lost power for ${outage.humanize()}`;
   }
 };
 
