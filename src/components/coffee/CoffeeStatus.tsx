@@ -13,7 +13,7 @@ const coffeeOutageText = (brewOutages: Duration): string => {
   if (outage.asSeconds() <= 10) {
     return "without losing power";
   } else {
-    return `, but lost power for ${outage.humanize()}`;
+    return `but has been without power for ${outage.humanize()}`;
   }
 };
 
@@ -22,18 +22,14 @@ const CoffeeStatus: React.FC<ICoffeeStatus> = ({
   status,
   brewOutages
 }) => {
-  return (
-    <>
-      {status === 0 ? (
-        <p className="coffeeBrewTimer">The coffee has no power, go save it!</p>
-      ) : (
-        <p className="coffeeBrewTimer">
-          The coffee has been brewing for {duration(brewStarted)},{" "}
-          {coffeeOutageText(brewOutages)}.
-        </p>
-      )}
-    </>
-  );
+  let text = "";
+  if (status === 0) {
+    text = "The coffee has no power, go save it!";
+  } else {
+    text = `The coffee has been brewing for ${duration(brewStarted)}, `;
+    text += `${coffeeOutageText(brewOutages)}.`;
+  }
+  return <p className="coffeeBrewTimer">{text}</p>;
 };
 
 export default CoffeeStatus;
