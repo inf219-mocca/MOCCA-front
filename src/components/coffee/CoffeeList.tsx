@@ -4,6 +4,7 @@ import { ICoffee } from "./Coffee";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import useInterval from "../../utils/useInterval";
+import apiURL from "../../utils/api";
 
 const CoffeeList: React.FC<ICoffee> = ({
   measured_at,
@@ -38,7 +39,7 @@ const CoffeeTable: React.FC = () => {
 
   const getCoffees = async () => {
     const res = await axios
-      .create({ baseURL: "http://localhost:8000" })
+      .create({ baseURL: apiURL() })
       .get("/api/v1/coffee/");
     try {
       setCoffees(res.data);

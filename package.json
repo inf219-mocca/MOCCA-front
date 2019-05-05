@@ -2,7 +2,6 @@
   "name": "mocca-front",
   "version": "0.1.0",
   "description": "Frontend for MOCCAPI",
-  "homepage": ".",
   "license": "MIT",
   "maintainers": [
     "Eivind Dagsland Halderaker <> ()",

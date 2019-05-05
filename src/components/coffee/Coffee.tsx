@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import useInterval from "../../utils/useInterval";
 import { Duration } from "moment";
+import apiURL from "../../utils/api";
 
 export interface ICoffee {
   id: number;
@@ -25,7 +26,7 @@ const Coffee: React.FC = () => {
 
   const getCoffee = async () => {
     const res = await axios
-      .create({ baseURL: "http://localhost:8000" })
+      .create({ baseURL: apiURL() })
       .get("/api/v1/coffee/now");
     try {
       setCoffee(res.data);
